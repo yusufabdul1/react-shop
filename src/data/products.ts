@@ -1,4 +1,3 @@
-
 export interface Product {
   id: number;
   name: string;
@@ -63,10 +62,32 @@ export const categories: Category[] = [
     name: "Wearables",
     image: "/placeholder.svg",
     subcategories: ["Smartwatches", "Fitness Trackers", "VR Headsets"]
+  },
+  {
+    id: "homeappliances",
+    name: "Home Appliances",
+    image: "/placeholder.svg",
+    subcategories: ["Kitchen", "Cleaning", "Air Treatment", "Smart Home"]
+  },
+  {
+    id: "fashion",
+    name: "Fashion",
+    image: "/placeholder.svg",
+    subcategories: ["Clothing", "Footwear", "Accessories", "Watches"]
+  },
+  {
+    id: "gadgets",
+    name: "Tech Gadgets",
+    image: "/placeholder.svg",
+    subcategories: ["Cameras", "Drones", "Smart Devices", "Wearables"]
   }
 ];
 
-export const products: Product[] = [
+// Import the additional products
+import { additionalProducts } from './moreProducts';
+
+// Original products
+const originalProducts: Product[] = [
   {
     id: 1,
     name: "XTech Pro Smartphone",
@@ -268,6 +289,9 @@ export const products: Product[] = [
   }
 ];
 
+// Combine original and additional products
+export const products: Product[] = [...originalProducts, ...additionalProducts];
+
 // Function to get products by category
 export const getProductsByCategory = (categoryId: string) => {
   return products.filter(product => product.category === categoryId);
@@ -309,6 +333,8 @@ export const searchProducts = (query: string) => {
   return products.filter(product => 
     product.name.toLowerCase().includes(searchTerm) || 
     product.description.toLowerCase().includes(searchTerm) ||
+    product.category.toLowerCase().includes(searchTerm) ||
+    product.subcategory.toLowerCase().includes(searchTerm) ||
     (product.tags && product.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
   );
 };

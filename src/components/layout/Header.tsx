@@ -5,12 +5,15 @@ import { Search, ShoppingCart, User, Heart, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/hooks/useWishlist';
+import { useAuth } from '@/hooks/useAuth';
 import MobileMenu from './MobileMenu';
-import SearchBar from '../ui/SearchBar';
+import SearchBarWithSuggestions from '../ui/SearchBarWithSuggestions';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const Header = () => {
   const { cartItems } = useCart();
   const { wishlistItems } = useWishlist();
+  const { user } = useAuth();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   
@@ -67,7 +70,7 @@ const Header = () => {
 
           {/* Search Bar (Desktop) */}
           <div className="hidden md:flex flex-1 max-w-md mx-6">
-            <SearchBar />
+            <SearchBarWithSuggestions />
           </div>
 
           {/* Icons */}
@@ -91,12 +94,19 @@ const Header = () => {
               )}
             </Link>
             
-            <Link 
-              to="/account" 
-              className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100"
-            >
-              <User size={20} className={isActive('/account') ? 'text-volt-blue' : ''} />
-            </Link>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link 
+                  to="/profile" 
+                  className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100"
+                >
+                  <User size={20} className={isActive('/profile') ? 'text-volt-blue' : ''} />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                {user?.name || "My Profile"}
+              </TooltipContent>
+            </Tooltip>
             
             <Link 
               to="/cart" 
@@ -122,7 +132,7 @@ const Header = () => {
         {/* Mobile Search Bar */}
         {showSearch && (
           <div className="pb-4 md:hidden">
-            <SearchBar />
+            <SearchBarWithSuggestions />
           </div>
         )}
       </div>
@@ -168,10 +178,22 @@ const Header = () => {
               Wearables
             </Link>
             <Link 
-              to="/category/accessories" 
-              className={`whitespace-nowrap ${currentPath === '/category/accessories' ? 'text-volt-blue font-medium' : 'hover:text-volt-blue'}`}
+              to="/category/homeappliances" 
+              className={`whitespace-nowrap ${currentPath === '/category/homeappliances' ? 'text-volt-blue font-medium' : 'hover:text-volt-blue'}`}
             >
-              Accessories
+              Home Appliances
+            </Link>
+            <Link 
+              to="/category/fashion" 
+              className={`whitespace-nowrap ${currentPath === '/category/fashion' ? 'text-volt-blue font-medium' : 'hover:text-volt-blue'}`}
+            >
+              Fashion
+            </Link>
+            <Link 
+              to="/category/gadgets" 
+              className={`whitespace-nowrap ${currentPath === '/category/gadgets' ? 'text-volt-blue font-medium' : 'hover:text-volt-blue'}`}
+            >
+              Tech Gadgets
             </Link>
           </div>
         </div>
