@@ -14,6 +14,8 @@ import { AuthProvider } from "./hooks/useAuth";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
+import CategoryPage from "./pages/CategoryPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
                   <Route path="/" element={<HomePage />} />
                   <Route path="/product/:id" element={<ProductPage />} />
                   <Route path="/cart" element={<CartPage />} />
+                  <Route path="/category/:categoryName" element={<CategoryPage />} />
+                  <Route path="/checkout" element={<CheckoutPage />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>

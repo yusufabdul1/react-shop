@@ -8,7 +8,7 @@ interface CarouselProps {
   interval?: number;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ 
+const CustomCarousel: React.FC<CarouselProps> = ({ 
   children, 
   autoPlay = true, 
   interval = 5000 
@@ -86,4 +86,4 @@ const Carousel: React.FC<CarouselProps> = ({
   );
 };
 
-export default Carousel;
+export default CustomCarousel;
