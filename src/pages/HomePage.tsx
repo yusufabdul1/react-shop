@@ -1,5 +1,6 @@
+
 import { Link } from 'react-router-dom';
-import Carousel from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import ProductGrid from '@/components/ui/ProductGrid';
 import CategoryCard from '@/components/ui/CategoryCard';
 import CountdownTimer from '@/components/ui/CountdownTimer';
@@ -19,65 +20,77 @@ const HomePage = () => {
     <div className="min-h-screen">
       {/* Hero Banner Carousel */}
       <section className="mb-10">
-        <Carousel>
-          {/* Slide 1 */}
-          <div className="relative w-full h-[300px] md:h-[400px] bg-gradient-to-r from-blue-600 to-volt-blue">
-            <div className="volt-container h-full flex flex-col md:flex-row items-center justify-between">
-              <div className="text-white max-w-lg text-center md:text-left py-8">
-                <h1 className="heading-xl mb-4">The Future of Tech is Here</h1>
-                <p className="text-white/80 mb-6">Discover the latest and greatest in electronics with exclusive deals only at VoltMart.</p>
-                <Link to="/products" className="btn-accent inline-block">
-                  Shop Now
-                </Link>
+        <Carousel className="w-full">
+          <CarouselContent>
+            {/* Slide 1 */}
+            <CarouselItem>
+              <div className="relative w-full h-[300px] md:h-[400px] bg-gradient-to-r from-blue-600 to-volt-blue">
+                <div className="volt-container h-full flex flex-col md:flex-row items-center justify-between">
+                  <div className="text-white max-w-lg text-center md:text-left py-8">
+                    <h1 className="heading-xl mb-4">The Future of Tech is Here</h1>
+                    <p className="text-white/80 mb-6">Discover the latest and greatest in electronics with exclusive deals only at VoltMart.</p>
+                    <Link to="/products" className="btn-accent inline-block">
+                      Shop Now
+                    </Link>
+                  </div>
+                  <div className="hidden md:block">
+                    <img 
+                      src="/placeholder.svg" 
+                      alt="Latest electronics" 
+                      className="max-h-[300px] object-contain"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="hidden md:block">
-                <img 
-                  src="/placeholder.svg" 
-                  alt="Latest electronics" 
-                  className="max-h-[300px] object-contain"
-                />
+            </CarouselItem>
+            
+            {/* Slide 2 */}
+            <CarouselItem>
+              <div className="relative w-full h-[300px] md:h-[400px] bg-gradient-to-r from-volt-black to-gray-800">
+                <div className="volt-container h-full flex flex-col md:flex-row items-center justify-between">
+                  <div className="text-white max-w-lg text-center md:text-left py-8">
+                    <h1 className="heading-xl mb-4">Premium Audio Collection</h1>
+                    <p className="text-white/80 mb-6">Immerse yourself in superior sound quality with our premium headphones and speakers.</p>
+                    <Link to="/category/audio" className="btn-accent inline-block">
+                      Explore Audio
+                    </Link>
+                  </div>
+                  <div className="hidden md:block">
+                    <img 
+                      src="/placeholder.svg" 
+                      alt="Premium audio devices" 
+                      className="max-h-[300px] object-contain"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          
-          {/* Slide 2 */}
-          <div className="relative w-full h-[300px] md:h-[400px] bg-gradient-to-r from-volt-black to-gray-800">
-            <div className="volt-container h-full flex flex-col md:flex-row items-center justify-between">
-              <div className="text-white max-w-lg text-center md:text-left py-8">
-                <h1 className="heading-xl mb-4">Premium Audio Collection</h1>
-                <p className="text-white/80 mb-6">Immerse yourself in superior sound quality with our premium headphones and speakers.</p>
-                <Link to="/category/audio" className="btn-accent inline-block">
-                  Explore Audio
-                </Link>
+            </CarouselItem>
+            
+            {/* Slide 3 */}
+            <CarouselItem>
+              <div className="relative w-full h-[300px] md:h-[400px] bg-gradient-to-r from-purple-600 to-blue-500">
+                <div className="volt-container h-full flex flex-col md:flex-row items-center justify-between">
+                  <div className="text-white max-w-lg text-center md:text-left py-8">
+                    <h1 className="heading-xl mb-4">Gaming Revolution</h1>
+                    <p className="text-white/80 mb-6">Level up your gaming experience with the latest consoles, accessories, and games.</p>
+                    <Link to="/category/gaming" className="btn-accent inline-block">
+                      Game On
+                    </Link>
+                  </div>
+                  <div className="hidden md:block">
+                    <img 
+                      src="/placeholder.svg" 
+                      alt="Gaming products" 
+                      className="max-h-[300px] object-contain"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="hidden md:block">
-                <img 
-                  src="/placeholder.svg" 
-                  alt="Premium audio devices" 
-                  className="max-h-[300px] object-contain"
-                />
-              </div>
-            </div>
-          </div>
-          
-          {/* Slide 3 */}
-          <div className="relative w-full h-[300px] md:h-[400px] bg-gradient-to-r from-purple-600 to-blue-500">
-            <div className="volt-container h-full flex flex-col md:flex-row items-center justify-between">
-              <div className="text-white max-w-lg text-center md:text-left py-8">
-                <h1 className="heading-xl mb-4">Gaming Revolution</h1>
-                <p className="text-white/80 mb-6">Level up your gaming experience with the latest consoles, accessories, and games.</p>
-                <Link to="/category/gaming" className="btn-accent inline-block">
-                  Game On
-                </Link>
-              </div>
-              <div className="hidden md:block">
-                <img 
-                  src="/placeholder.svg" 
-                  alt="Gaming products" 
-                  className="max-h-[300px] object-contain"
-                />
-              </div>
-            </div>
+            </CarouselItem>
+          </CarouselContent>
+          <div className="absolute z-10 left-4 right-4 top-1/2 -translate-y-1/2 flex justify-between">
+            <CarouselPrevious className="relative left-0 translate-y-0" />
+            <CarouselNext className="relative right-0 translate-y-0" />
           </div>
         </Carousel>
       </section>
