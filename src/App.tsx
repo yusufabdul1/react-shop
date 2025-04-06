@@ -16,6 +16,10 @@ import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
 import CategoryPage from "./pages/CategoryPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import ProductsPage from "./pages/ProductsPage";
+import CategoriesPage from "./pages/CategoriesPage";
+import DealsPage from "./pages/DealsPage";
+import WishlistPage from "./pages/WishlistPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +38,10 @@ const App = () => (
                   <Route path="/" element={<HomePage />} />
                   <Route path="/product/:id" element={<ProductPage />} />
                   <Route path="/cart" element={<CartPage />} />
+                  <Route path="/products" element={<ProductsPage />} />
+                  <Route path="/categories" element={<CategoriesPage />} />
+                  <Route path="/deals" element={<DealsPage />} />
+                  <Route path="/wishlist" element={<WishlistPage />} />
                   <Route path="/category/:categoryName" element={<CategoryPage />} />
                   <Route path="/checkout" element={<CheckoutPage />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
