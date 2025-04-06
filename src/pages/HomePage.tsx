@@ -1,6 +1,5 @@
-
 import { Link } from 'react-router-dom';
-import Carousel from '@/components/ui/Carousel';
+import Carousel from '@/components/ui/carousel';
 import ProductGrid from '@/components/ui/ProductGrid';
 import CategoryCard from '@/components/ui/CategoryCard';
 import CountdownTimer from '@/components/ui/CountdownTimer';
